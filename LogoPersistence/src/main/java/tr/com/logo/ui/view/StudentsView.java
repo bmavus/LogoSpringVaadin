@@ -5,7 +5,6 @@ import org.vaadin.viritin.fields.MTable;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Field;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Notification.Type;
@@ -56,12 +55,6 @@ public class StudentsView extends VerticalLayout implements View {
 		editButton.addClickListener(event -> {
 			StudentForm studentForm = new StudentForm();
 			studentForm.setEntity(studentTable.getValue());
-			for(Object id : studentForm.getFieldGroup().getBoundPropertyIds()) {
-				System.out.println(id);
-			}
-			for(Field f : studentForm.getFieldGroup().getFields()) {
-				System.out.println(f.getValue());
-			}
 			Window popup = studentForm.openInModalPopup();
 			studentForm.setSavedHandler(entity -> {
 				studentService.save(entity);
